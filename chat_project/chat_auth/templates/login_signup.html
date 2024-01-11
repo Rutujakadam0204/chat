@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Login/Signup{% endblock %}
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+    <script>alert("{{message}}");</script>
+{% endfor %}
+{% endif %}
+
+<h3 style="align:center">SignUp</h3>
+<form method="post" action="/sign-up">
+    {% csrf_token %}
+    <input type="text" name="first_name" placeholder="Your First Name"><br>
+    <input type="text" name="last_name" placeholder="Your Last Name"><br>
+    <input type="email" name="email" placeholder="Your Email"><br>
+    <input type="text" name="password" placeholder="Your Password"><br>
+    <input type="submit" value="SignUp">
+</form>
+<h3>SignIn</h3>
+<form method="post">
+    {% csrf_token %}
+    <input type="email" name="email" placeholder="Your Email"><br>
+    <input type="text" name="password" placeholder="Your Password"><br>
+    <input type="submit" value="SignIn">
+</form>
+{% endblock %}

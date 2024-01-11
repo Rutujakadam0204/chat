@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+<h4> Assignment</h4>  {% if request.user.username %}<a href="/logout">logout</a>{% endif %}<br><br>
+{% block content %}
+{% endblock %}
+</body>
+</html>
