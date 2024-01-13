@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'channels',
     'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -75,13 +74,9 @@ TEMPLATES = [
 # WSGI_APPLICATION = 'chat_project.wsgi.application'
 ASGI_APPLICATION = "chat_project.asgi.application"
 CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            # Use the Redis URL from the Render environment
-            "hosts": [('redis://red-ckdfqtkiibqc738jov0g:6379',)],
-        },
-    },
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -134,3 +129,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+LOGIN_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

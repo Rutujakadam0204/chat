@@ -14,15 +14,24 @@
     {% csrf_token %}
     <input type="text" name="first_name" placeholder="Your First Name"><br>
     <input type="text" name="last_name" placeholder="Your Last Name"><br>
+    <input type="text" name="gender" placeholder="Your Gender"><br>
+    <input type="text" name="country" placeholder="Your Country"><br>
+    <input type="text" name="phone" placeholder="Your Phonr number"><br>
     <input type="email" name="email" placeholder="Your Email"><br>
-    <input type="text" name="password" placeholder="Your Password"><br>
+    <input type="password" name="password" placeholder="Your Password"><br>
+    <select multiple name="interests">
+        <option value="">Select multiple interests</option>
+        {% for i in interest %}
+            <option value="{{i.id}}">{{i.title}}</option>
+        {% endfor %}
+    </select>
     <input type="submit" value="SignUp">
 </form>
 <h3>SignIn</h3>
-<form method="post">
+<form method="post" action="/">
     {% csrf_token %}
     <input type="email" name="email" placeholder="Your Email"><br>
-    <input type="text" name="password" placeholder="Your Password"><br>
+    <input type="password" name="password" placeholder="Your Password"><br>
     <input type="submit" value="SignIn">
 </form>
 {% endblock %}

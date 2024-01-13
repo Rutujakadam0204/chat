@@ -7,7 +7,13 @@
 </head>
 
 <body>
-<h4> Assignment</h4>  {% if request.user.username %}<a href="/logout">logout</a>{% endif %}<br><br>
+<h4> Assignment</h4>
+{% if request.user.username %}
+<a href="/logout">logout</a>
+
+{% endif %}
+
+<br><br>
 {% block content %}
 {% endblock %}
 </body>

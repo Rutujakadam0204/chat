@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
-# Create your models here.
+from django.utils import timezone
+
 
 class RoomNames(models.Model):
     my_user = models.ForeignKey(User,related_name='my_user', on_delete = models.CASCADE)
@@ -10,8 +10,7 @@ class RoomNames(models.Model):
 
 
 class MessageHistory(models.Model):
-    room = models.ForeignKey(RoomNames, on_delete = models.CASCADE)
+    room = models.ForeignKey(RoomNames, on_delete = models.CASCADE, blank=True)
+    sender = models.ForeignKey(User, on_delete = models.CASCADE, null=True)
     text = models.TextField(max_length=10000, blank=True)
-    sent_date = models.DateTimeField(default=datetime.now())
-    image = models.FileField(upload_to='history')
-
+    sent_date = models.DateTimeField(default=timezone.now)
